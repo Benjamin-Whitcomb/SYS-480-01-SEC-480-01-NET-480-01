@@ -1,5 +1,5 @@
 #!/bin/vbash
-source /opt/vyatta/etc/funtions/script-template
+source /opt/vyatta/etc/functions/script-template
 configure
 set interfaces ethernet eth1 address "{{ lan_ip }}/24"
 set nat source rule 10 outbound-interface 'eth0'
