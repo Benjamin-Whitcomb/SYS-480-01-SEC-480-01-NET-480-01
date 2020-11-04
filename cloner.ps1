@@ -48,6 +48,7 @@ if ($clonetype -eq "L"){
     exit
 
 }
+}
 
 
 if ($clonetype -eq "F") {
