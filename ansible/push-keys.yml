@@ -4,26 +4,29 @@
     tasks:
       - name: create .ssh directory if absent
         file:
-          path: /home/deployer.ssh
+          path: /home/deployer/.ssh
           state: directory
           mode: 0700
+        become: yes
       - name: create auth_keys file
-          file:
-            path: /home/deployer/.ssh/authorized_keys
-            state: touch
-            mode: 0644
+        file: 
+          path: /home/deployer/.ssh/authorized_keys
+          state: touch
+          mode: 0644
+        become: yes
       - name: copy over key block and append to auth_keys
-          blockinfile:
-            dest: /home/deployer/.ssh/authorized_keys
-            block: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCvr5E+32R6TAELufCy7Z5XzwsDOHdLOWqyqxmtrLURen7KKXiOkedW07LXXqN1als7RFB7YzvM2AvAgHwGHWOxHjRZpzzL0J/vGtqzy1ZCN8HNMv2jjniKQEmNlhp/WjurR2fhu2A9CptKkCjXTq52Aj3361UndHk6xKUBLwwCOatr2RmyXhRUa3j3yjHjk1BJRmz+JlgVoFeCfqSb5Q+coednEvRK6N9JnkJFUl9w1EpEfxxOzXPM9e8hwYsLJdRri9cHMApQivIlk6aoPRUtkizJ0wzENnl1M5L3lT+JyRGiFLx4hysVuqJ1E98IKQXEDVM9LgwWNi71mY7fTtKpyd4WzuGD/WPjm2UrkCWeK4O2A1U9kUX4PrWPC3eFvTr2eqP7I891Uc7RQjWKUlqCw4E0c3icUVQgUkuMSh2Q53QFYmRJ5Dq1GElB/n4y7Xvzf0gpqRdWyKQWCugoT/Al4ywWudGuZOABuKuZv6aBSOVI06p0W6LY0oKpJ6dZRNc= ben@ubuntu
+        blockinfile: 
+          dest: /home/deployer/.ssh/authorized_keys
+          block: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBDBuTSZTrSSNCp0vOPebAsmH45HKRfQpgrhCGeE9y7TLMWW92xF/F+oA6akk/6HjsqU1TUK1EF+IoAla3oyOjklCrM9YZyJ7ciF9DFguxUU4f7VN8B9We2FB/yztfNOOKLQPa9Jf97xkLlsY990OcgUuB4D1rs653+1JQS9YkeEA09mYjfQ9hlOKbnYnPj4VDXLu4IPsd8T6UIv5vaT+WmcTKJOjeSMy3pdpWf3qFdwETLq6cOvmcj31glnr1ttzfVOe9CHJp75/Owq/J4eO6p56VIqPILldmLBZ7ogLfIeqwDFxfmTnZcGzgR5WllsxP4yIvMx/Z8aHdAY2eJ2ynNV0ipTOxMX4BJi/udPyUQy2cJpVoNUsAQV6wcdBPQulWapK0MauuLVGcTH1DaBxwby2sp5pRNag9ZcBlaXtOpU3q2C3WmqCBn9bzuTxCrE0F8oD/Jg3BBam9hc9VZcwwl/y0N8rv38vPjyOra27eVw7nMn1dq3E35SbctRH6iGU= deployer-key
+        become: yes
       - name: sudoer dropin
-        file:
+        file: 
           path: /etc/sudoers.d/480
           state: touch
           mode: 0440
         become: yes
       - name: create deployer entry
-        blockinfile:
-        dest: /wtc/sudoers.d/480
-        block: "deployer  ALL=(ALL) NOPASSWD: ALL"
-      become: yes
+        blockinfile: 
+          dest: /etc/sudoers.d/480
+          block: "deployer ALL=(ALL) NOPASSWD: ALL"
+        become: yes

@@ -1,0 +1,30 @@
+---
+
+- name: centos-networking
+  hosts: centos_server
+  tasks:
+  - name: set hostname
+    hostname:
+      name: "{{hostname}}"
+    become: yes
+
+  - name: add host to hosts file
+    lineinfile:
+      path: /etc/hosts
+      line: '127.0.1.1 {{hostname}}'
+    become: yes
+  - name: push over networking script
+      template: 
+        src: /home/ben/SYS-480-01-SEC-480-01-NET-480-01/ansible/centos/ifcfg--script.j2
+        dest: '/etc/sysconfig/network-scripts/ifcfg--{{device}}'
+        mode: 0644
+        owner: root
+        group: root
+        force: yes
+      become: yes
+
+  - name: restartnetworking
+      shell: "sleep 5 && reboot"
+      become: yes
+      async: 1
+      poll: 0
