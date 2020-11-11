@@ -1,0 +1,27 @@
+---
+- name: windows-networking
+  hosts: domain_controller
+  gather_facts: no
+  vars_prompt:
+  - name: adminpassword
+    prompt: "New admin pass"
+    private: yes
+
+  tasks:
+  - name: set local admin
+    win_user:
+      name: Administrator
+      password: "{{ adminpassword }}"
+      state: present
+
+  - name: Change time zone
+    win_timezone:
+        timezone: Eastern Standard Time
+    register: timezone
+
+  - name: set the hostname
+    win_hostname:
+      name: "{{ hostname }}"
+  
+  - name: create a deploy directory
+    

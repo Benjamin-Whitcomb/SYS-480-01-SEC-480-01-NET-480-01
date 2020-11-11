@@ -9,6 +9,35 @@
 [centos_server:vars]
 device=ens192
 
+[windows_workstation]
+
+[windows:children]
+windows_server
+windows_workstation
+
+[windows:vars]
+ansible_shell_type=powershell
+device=Ethernet0
+
+[server:children]
+centos_server
+windows_server
+
+
+[windows_server:children]
+domain_controller
+
+[domain_controller]
+10.0.5.10 hostname=dc-blue
+
+[server:vars]
+gateway=10.0.5.2
+prefix=24
+netmask=255.255.255.0
+name_server=10.0.5.2
+ansible_user=deployer
+domai=blue2.local
+
 [linux_server:children]
 centos_server
 
