@@ -16,7 +16,7 @@ centos_server
 gateway=10.0.5.2
 prefix=24
 name_server=10.0.5.2
-domain=ben.local
+domain=blue2.local
 ansible_user=deployer
 
 [vyos:vars]

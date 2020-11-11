@@ -6,7 +6,7 @@
       prompt: What IP Address do you want to map
       private: no
     - name: mapped_mac
-      prompt: whatis the host's MAC
+      prompt: what is the host's MAC
       private: no
   tasks: 
     - name: show conf 
@@ -14,4 +14,3 @@
         lines:
           - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} ip-address {{mapped_ip}}"
           - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} mac-address {{mapped_mac}}"
-          
