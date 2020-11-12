@@ -13,6 +13,7 @@
       name: Administrator
       password: "{{ adminpassword }}"
       state: present
+      password_never_expires: yes
 
   - name: Change time zone
     win_timezone:
@@ -24,4 +25,16 @@
       name: "{{ hostname }}"
   
   - name: create a deploy directory
+    win_file:
+      path: C:\480
+      state: directory
+  - name: load from jinja
+    win_template:
+      src: /home/ben/SYS-480-01-SEC-480-01-NET-480-01/ansible/static.ps1.j2
+      dest: C:\480\static.ps1
+  - name: run script
+    async: 10
+    poll: 0
+    win_shell:
+      C:\480\static.ps1
     
