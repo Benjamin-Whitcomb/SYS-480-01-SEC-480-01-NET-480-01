@@ -36,7 +36,7 @@ prefix=24
 netmask=255.255.255.0
 name_server=10.0.5.2
 ansible_user=deployer
-domai=blue2.local
+domain=blue2.local
 
 [linux_server:children]
 centos_server
