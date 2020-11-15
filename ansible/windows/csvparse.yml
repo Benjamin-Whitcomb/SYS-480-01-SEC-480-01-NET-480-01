@@ -1,0 +1,26 @@
+---
+- name: parse a csv file and loop tasks.
+  hosts: domain_controller
+  vars_prompt:
+  - name: user_path 
+    prompt: path to users
+    private: no
+
+  tasks:
+  - name: read user_csv
+    read_csv:
+      path: "{{ user_path }}"
+    register: items
+    delegate_to: localhost
+  
+  - name: loop for users
+    win_domain_user:
+      name: "{{ item.username }}"
+      password: "{{ item.password }}"
+      groups: "{{ item.group }}"
+    with_items: "{{ items.list }}"
+
+      
+        
+      
+
