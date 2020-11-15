@@ -17,8 +17,9 @@ device=ens192
 ansible_shell_type=cmd
 
 [windows:children]
-windows_server
+#windows_server
 windows_workstation
+domain_join
 
 [windows:vars]
 ansible_shell_type=powershell
