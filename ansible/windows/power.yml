@@ -4,4 +4,4 @@
   tasks:
     - name: set power to high performance
       win_power_plan:
-      name: high performance
+        name: high performance
