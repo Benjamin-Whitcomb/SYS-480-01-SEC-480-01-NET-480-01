@@ -26,6 +26,7 @@ windows_server
 
 [windows_server:children]
 domain_controller
+domain_join
 
 [domain_controller]
 10.0.5.10 hostname=dc-blue
@@ -58,3 +59,4 @@ ansible_network_os=vyos
 shared_network_name=BLUE2
 dhcp_subnet="10.0.5.0/24"
 static_map_name="dc-blue2"
+static_map_name2="vanhalen"

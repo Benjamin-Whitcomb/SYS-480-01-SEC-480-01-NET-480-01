@@ -12,5 +12,5 @@
     - name: show conf 
       vyos_config: 
         lines:
-          - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} ip-address {{mapped_ip}}"
-          - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name}} mac-address {{mapped_mac}}"
+          - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name2}} ip-address {{mapped_ip}}"
+          - "set service dhcp-server shared-network-name {{shared_network_name}} subnet {{dhcp_subnet}} static-mapping {{static_map_name2}} mac-address {{mapped_mac}}"
