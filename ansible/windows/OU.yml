@@ -1,13 +1,13 @@
 ---
+- name: Create OUs
+  hosts: domain_controller
+  gather_facts: no
 
-- name: create a deploy directory
-    win_file:
-      path: C:\480
-      state: directory
+  tasks:
   - name: load from jinja
     win_template:
       src: /home/ben/SYS-480-01-SEC-480-01-NET-480-01/ansible/windows/OU.ps1.j2
-      dest: C:\480\static.ps1
+      dest: C:\480\OU.ps1
   - name: run script
     async: 10
     poll: 0
