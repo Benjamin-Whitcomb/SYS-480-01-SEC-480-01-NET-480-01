@@ -1,6 +1,6 @@
 ---
 - name: windows-networking
-  hosts: domain_controller
+  hosts: domain_join
   gather_facts: no
   vars_prompt:
   - name: adminpassword
@@ -30,7 +30,7 @@
       state: directory
   - name: load from jinja
     win_template:
-      src: /home/ben/SYS-480-01-SEC-480-01-NET-480-01/ansible/static.ps1.j2
+      src: /home/ben/SYS-480-01-SEC-480-01-NET-480-01/ansible/windows/static.ps1.j2
       dest: C:\480\static.ps1
   - name: run script
     async: 10

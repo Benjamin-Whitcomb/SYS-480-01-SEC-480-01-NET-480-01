@@ -1,7 +1,7 @@
 New-ADOrganizationalUnit -Name "blue2"
-New-ADOrganizationalUnit -Name "Accounts"
-New-ADOrganizationalUnit -Name "Groups" 
-New-ADOrganizationalUnit -Name "Computers" 
-New-ADOrganizationalUnit -Name "Servers" 
-New-ADOrganizationalUnit -Name "Workstations" 
-New-ADOrganizationalUnit -Name "demotest" 
+New-ADOrganizationalUnit -Name "Accounts" -Path "OU=blue2,DC=blue2,DC=local"
+New-ADOrganizationalUnit -Name "Groups" -Path "OU=Accounts,OU=blue2,DC=blue2,DC=local"
+New-ADOrganizationalUnit -Name "Computers" -Path "OU=blue2,DC=blue2,DC=local"
+New-ADOrganizationalUnit -Name "Servers" -Path "OU=Computers,OU=blue2,DC=blue2,DC=local"
+New-ADOrganizationalUnit -Name "Workstations" -Path "OU=Computers,OU=blue2,DC=blue2,DC=local"
+
