@@ -13,6 +13,9 @@ device=ens192
 10.0.5.86 hostname=workstation-1
 10.0.5.85 hostame=workstation-2
 
+[windows_workstation:vars]
+ansible_shell_type=cmd
+
 [windows:children]
 windows_server
 windows_workstation
@@ -20,6 +23,7 @@ windows_workstation
 [windows:vars]
 ansible_shell_type=powershell
 device=Ethernet0
+ansible_user=deployer
 
 [server:children]
 centos_server

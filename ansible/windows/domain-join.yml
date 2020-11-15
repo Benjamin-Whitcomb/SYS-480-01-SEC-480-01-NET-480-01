@@ -1,6 +1,7 @@
 ---
 - name: Domain Join
   hosts: windows_workstation
+  gather_facts: true
   vars_prompt:
   - name: admin_user
     prompt: Admin User
@@ -17,7 +18,7 @@
   - name: Join to Domain
     win_domain_membership:
       dns_domain_name: blue2.local
-      hostname: "{{ hostname }}"
+      hostname: "{{ ansible_hostname }}"
       domain_admin_user: "{{ admin_user }}"
       domain_admin_password: "{{ admin_password }}"
       domain_ou_path: "OU=Workstations,OU=Computers,OU=blue2,DC=blue2,DC=local"
@@ -26,4 +27,4 @@
 
   - name: reboot in needed
     win_reboot:
-      when: domain_state.reboot_required
+    

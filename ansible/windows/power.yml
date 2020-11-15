@@ -1,0 +1,7 @@
+---
+- name: adjust power settings of workstations
+  hosts: windows_workstation
+  tasks:
+    - name: set power to high performance
+      win_power_plan:
+      name: high performance
