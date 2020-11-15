@@ -1,6 +1,6 @@
 ---
 - name: Domain Join
-  hosts: domain_join
+  hosts: windows_workstation
   vars_prompt:
   - name: admin_user
     prompt: Admin User
@@ -17,10 +17,10 @@
   - name: Join to Domain
     win_domain_membership:
       dns_domain_name: blue2.local
-      hostname: vanhalen
+      hostname: "{{ hostname }}"
       domain_admin_user: "{{ admin_user }}"
       domain_admin_password: "{{ admin_password }}"
-      domain_ou_path: "OU=servers,OU=Computers,OU=blue2,DC=blue2,DC=local"
+      domain_ou_path: "OU=Workstations,OU=Computers,OU=blue2,DC=blue2,DC=local"
       state: domain
     register: domain_state
 

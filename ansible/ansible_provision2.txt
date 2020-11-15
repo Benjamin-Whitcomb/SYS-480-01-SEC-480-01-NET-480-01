@@ -10,6 +10,8 @@
 device=ens192
 
 [windows_workstation]
+10.0.5.86 hostname=workstation-1
+10.0.5.85 hostame=workstation-2
 
 [windows:children]
 windows_server
