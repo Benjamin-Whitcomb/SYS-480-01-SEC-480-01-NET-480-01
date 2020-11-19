@@ -1,0 +1,11 @@
+---
+- name: install and start nginx on aws server
+  hosts: aws
+  tasks:
+    - name: install nginx
+      apt: 
+        name: nginx
+    - name: start nginx service
+      service:
+        name: nginx
+        state: started
