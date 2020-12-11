@@ -6,7 +6,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - /home/ben-adm/bind-mount:/usr/local/nginx/html
+      - /home/ben-adm/bind-mount:/usr/share/nginx/html
     restart: always
    
   
