@@ -1,27 +1,12 @@
 version: '3.8'
 
 services:
-  mysql1:
-    image: mysql:5.7
+  apache1:
+    image: nginx:alpine
+    ports:
+      - 80:80
     volumes:
-      - mysql-data:/var/lib/mysql
+      - /home/ben-adm/bind-mount:/usr/local/nginx/html
     restart: always
-    environment: 
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: password
-  wp1:
-    depends_on: 
-      - mysql1
-    image: wordpress:latest
-    ports: 
-      - "80:80"
-    restart: always
-    environment: 
-      WORDPRESS_DB_HOST: mysql1:3306
-      WORDPRESS_DB_NAME: wordpress
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: password
-volumes:
-    mysql-data: {}
+   
+  
